@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --config webpack-dev.config.js -w"
+    "client-dev": "webpack --config webpack-dev.config.js -w",
+    "server-dev": "npx nodemon --watch server server/index.js"
   },
   "repository": {
     "type": "git",
@@ -34,6 +35,7 @@
   "dependencies": {
     "babel-loader": "^9.1.2",
     "dotenv": "^16.0.3",
+    "express": "^4.18.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",
