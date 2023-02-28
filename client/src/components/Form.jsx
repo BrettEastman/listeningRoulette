@@ -47,18 +47,34 @@ const Form = function CreateForm ({ handleSubmit }) {
           placeholder="Enter album"
           onChange={handleInputChange}
         />
-        <input type="submit" value="Register"></input>
+        <Input type="submit" value="Register"></Input>
       </div>
     </StyledForm>
   );
 };
 
 const StyledForm = styled.form`
-  font-family: 'Recursive', sans-serif;
+  font-size: .8rem;
+  padding: .2rem;
+  margin: .2rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
+  background-color: hsl(358deg 99% 64% /.3);
   row-gap: 8px;
 `;
+
+const Input = styled.input`
+  color: black;
+  border: none;
+  background-color: hsl(358deg 99% 44% /.3);
+  border-radius: 8px;
+  padding: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  &:hover {
+    color: hsla(204deg 90% 66% / .9);
+  }
+`
 
 export default Form;
