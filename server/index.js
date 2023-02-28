@@ -1,14 +1,11 @@
 require('dotenv').config(); // must be first
 const express = require('express');
 
-// Local
-const router = require('./router');
-
 // Main
 const app = express();
 
+app.use(express.static('client/dist'));
 app.use(express.json());
-app.use(router);
 
 // Connect
 app.listen(process.env.PORT, (error) => {
