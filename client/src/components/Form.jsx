@@ -10,6 +10,10 @@ const initialFormInput = {
 const Form = function CreateForm ({ handleSubmit }) {
   const [ formInput, setFormInput ] = useState(initialFormInput);
 
+  const clearForm = () => {
+    setFormInput(initialFormInput);
+  };
+
   const handleInputChange = () => {
     setFormInput({
       ...formInput,
@@ -19,8 +23,10 @@ const Form = function CreateForm ({ handleSubmit }) {
 
   return (
     <StyledForm
-      onSubmit={() => {
-        handleSubmit(formInput)
+      onSubmit={(event) => {
+        event.preventDefault();
+        handleSubmit(formInput);
+        clearForm();
       }}
     >
       <h3>Enter your pick!</h3>

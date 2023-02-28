@@ -10,9 +10,6 @@ const app = express();
 app.use(express.json());
 app.use(router);
 
-// Check
-app.get('/', (req, res) => res.send('Hello World'));
-
 // Connect
 app.listen(process.env.PORT, (error) => {
   if (error) {
