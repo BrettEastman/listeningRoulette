@@ -1,5 +1,4 @@
 import React from 'react';
-import GlobalStyles from '../GlobalStyles.js'
 import styled from 'styled-components';
 
 const App = () => {
