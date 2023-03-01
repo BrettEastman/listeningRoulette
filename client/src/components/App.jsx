@@ -1,24 +1,57 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 import GlobalStyles from '../GlobalStyles.js';
 import Form from './Form.jsx';
+import AlbumList from './AlbumList.jsx';
 import Feed from './Feed.jsx';
 import Roulette from './Roulette.jsx';
 import exampleData from './tests/exampleData';
 
 const App = () => {
   const [ messages, setMessages ] = useState(exampleData);
-  // console.log(messages);
-  const handleSubmit = () => {
-    console.log('handle submit')
+  const [ albums, setAlbums ] = useState({});
+
+  const getAll = () => {
+    return axios.get('/lr');
   }
+
+  const fetchAll = () => {
+    getAll()
+      .then(({ data }) => {
+        setAlbums(data);
+        console.log('data: ', data);
+      })
+      .catch((error) => {
+        console.log('fetch error: ', error)
+      });
+  };
+
+  useEffect(() => {
+    fetchAll()}, []);
+
+  const handleSubmit = (obj) => {
+    axios({
+      method: 'post',
+      url: '/lr',
+      data: obj
+    })
+    .then((response) => {
+      fetchAll()
+    })
+    .catch((error) => {
+      console.log('post error: ', error)
+    });
+  };
+
   return (
     <div>
       <GlobalStyles />
       <Title>Listening Roulette</Title>
       <Container>
         <div>
-          <Form />
+          <Form handleSubmit={handleSubmit}/>
+          <AlbumList albums={albums}/>
         </div>
         <Feed messages={messages}/>
         <RouletteWrapper>

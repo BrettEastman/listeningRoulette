@@ -13,10 +13,12 @@ const MessageItem = ({ name, body, time }) => {
       <div>
         <p>{body}</p>
         <MessageFooter>
-          <EmotoSpan><RiHeartFill /></EmotoSpan>
-          <EmotoSpan><RiEmotionLaughFill /></EmotoSpan>
-          <EmotoSpan><HiOutlineHand /></EmotoSpan>
-          <EmotoSpan><RiEmotionNormalFill /></EmotoSpan>
+          <EmotoSpan>❤️</EmotoSpan>
+          <EmotoSpan>🤣</EmotoSpan>
+          <EmotoSpan>🙌</EmotoSpan>
+          <EmotoSpan>🫥</EmotoSpan>
+          <EmotoSpan>👏</EmotoSpan>
+          <EmotoSpan>🎯</EmotoSpan>
         </MessageFooter>
       </div>
     </MessageWrapper>
@@ -40,7 +42,7 @@ const Span = styled.span`
 const EmotoSpan = styled.span`
   cursor: pointer;
   &:hover {
-    color: hsla(204deg 90% 66% / .9);
+    transform: scale(1.25);
   }
 `;
 
