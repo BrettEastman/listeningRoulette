@@ -29,6 +29,7 @@ const MessageWrapper = styled.div`
   text-shadow: 0.5px 0.5px hsla(204deg 70% 86% / .9);
   border-radius: 8px;
   padding: 5px;
+  box-shadow: 0 2px 4px hsl(358deg 99% 24% /.3);
   margin: 5px;
 `;
 

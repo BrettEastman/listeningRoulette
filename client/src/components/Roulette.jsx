@@ -8,6 +8,7 @@ export default function Roulette6() {
   useEffect(() => {
     if (containerRef.current) {
       // you have access to the container. Gives you info that may be useful. Similar to document.querySelector although it may need to load once first, which is why we have the useEffect.
+      // show me the thing that is closest to the stopper. I
       console.log(containerRef.current.getBoundingClientRect()); //getBoundingClientRect is a property of html elements
     }
   }, [spinningStopped])
@@ -19,9 +20,6 @@ export default function Roulette6() {
   console.log(containerRef)
   const btnOnClick = function () {
     setNumber(getRandomInt(3000, 10000));
-    // setNumber((prev) => {
-    //   return prev + Math.ceil(Math.random() * 10000)
-    // })
     setNumber(number + Math.ceil(Math.random() * 10000));
     setTimeout(() => {
       setSpinningStopped(!spinningStopped);
@@ -44,7 +42,7 @@ export default function Roulette6() {
         id="spin" onClick={() => {
           btnOnClick();
         }}>Spin</button>
-      <div className="stoper"></div>
+      <div className="stopper"></div>
     </Container>
   );
 }
@@ -53,11 +51,10 @@ const Container = styled.div`
   .container {
     height: 350px;
     width: 350px;
-    /* background: white; */
     position: relative;
     border-radius: 50%;
     overflow: hidden;
-    box-shadow: 0 0 10px gray;
+    box-shadow: 0 0 10px hsl(358deg 99% 24% /.3);
     transition: 3s all;
     border: 1px solid black;
   }
@@ -68,7 +65,7 @@ const Container = styled.div`
     transform: translateX(-50%);
     transform-origin: bottom;
     position: absolute;
-    /* left: 21%; */
+    left: 21%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -76,66 +73,60 @@ const Container = styled.div`
     font-family: monospace;
     font-weight: 1000;
     transform-origin: bottom;
-    color: white;
+    color: black;
     writing-mode: vertical-rl;
   }
   .container .one {
-    background: hsla(204deg 70% 66% / .9);
+    background: hsla(204deg 70% 70% / .9);
     left: 50%;
   }
   .container .two {
-    background: #4ed4c6;
+    background: hsla(204deg 70% 66% / .9);
     transform: rotate(60deg);
   }
   .container .three {
-    background: #baf4ee;
+    background: hsla(204deg 70% 62% / .9);
     transform: rotate(120deg);
   }
   .container .four {
-    background: #4ed4c6;
+    background: hsl(358deg 99% 64% /.3);
     transform: rotate(180deg);
   }
   .container .five {
-    background: #baf4ee;
+    background: hsl(358deg 99% 54% /.3);
     transform: rotate(240deg);
   }
   .container .six {
-    background: #4ed4c6;
+    background: hsl(358deg 99% 44% /.3);
     transform: rotate(300deg);
   }
-  .mid {
-    height: 25px;
-    width: 25px;
-    border-radius: 50%;
-    position: absolute;
-    background: #008276;
-  }
+
   #spin {
-    height: 60px;
-    width: 200px;
-    background: #4ed4c6;
+    height: 20px;
+    width: 60px;
+    background: hsl(358deg 99% 64% /.3);
     position: absolute;
     margin-top: 20px;
-    font-size: 30px;
-    color: white;
+    margin-left: 147px;
+    font-size: 10px;
+    color: black;
     font-weight: 1000;
     letter-spacing: 4px;
-    border: 1px solid white;
+    border: 1px solid black;
     cursor: pointer;
-    box-shadow: 0 5px 10px gray;
+    box-shadow: 0 5px 10px hsl(358deg 99% 24% /.3);
     transition: 0.2s all;
   }
   #spin:hover {
     box-shadow: none;
   }
-  .stoper {
-    height: 50px;
-    width: 40px;
-    background: #ffd600;
-    position: absolute;
+  .stopper {
+    height: 20px;
+    width: 15px;
+    background: hsl(358deg 99% 64% /.3);
+    /* position: absolute; */
     clip-path: polygon(100% 0, 50% 100%, 0 0);
-    margin-top: -350px;
+    margin-top: -370px;
+    margin-left: 165px;
   }
 `;
-
-// show me the thing that is closest to the stopper. I
