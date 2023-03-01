@@ -1,75 +1,132 @@
-import React from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
-import { RxColorWheel } from 'react-icons/rx';
 
-const Roulette = () => {
+export default function Roulette6() {
+  const [ number, setNumber ] = useState(0);
+  const [ spinningStopped, setSpinningStopped ] = useState(true)
+  const containerRef = useRef(null)
+  useEffect(() => {
+    if (containerRef.current) {
+      // you have access to the container. Gives you info that may be useful. Similar to document.querySelector although it may need to load once first, which is why we have the useEffect.
+      // show me the thing that is closest to the stopper. I
+      console.log(containerRef.current.getBoundingClientRect()); //getBoundingClientRect is a property of html elements
+    }
+  }, [spinningStopped])
+
+  function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
+  }
+
+  console.log(containerRef)
+  const btnOnClick = function () {
+    setNumber(getRandomInt(3000, 10000));
+    setNumber(number + Math.ceil(Math.random() * 10000));
+    setTimeout(() => {
+      setSpinningStopped(!spinningStopped);
+    }, 3001)
+  };
+
+  // could potentially use useRef to determine which container has the highest Y coordinate to determine the winner
   return (
     <Container>
-      <Wheel>
-        <Section1 />
-        <Section2 />
-        <Section3 />
-        <Section4 />
-        <Section5 />
-      </Wheel>
+      <div className="container" ref={containerRef} style={{ transform: `rotate(${number}deg)`}}>
+        <div className="one">1</div>
+        <div className="two">2</div>
+        <div className="three">3</div>
+        <div className="four">4</div>
+        <div className="five">5</div>
+        <div className="six">6</div>
+      </div>
+      {/* <span className="mid"></span> */}
+      <button
+        id="spin" onClick={() => {
+          btnOnClick();
+        }}>Spin</button>
+      <div className="stopper"></div>
     </Container>
   );
-};
-
-const Container = styled.div`
-  width: 200px;
-  height: 200px;
-  position: relative;
-`
-const Wheel = styled.div`
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  border-radius: 50%;
-  border: 10px solid #333;
-  animation: spin 2s linear;
-
-  @keyframes spin {
-    100% {
-      transform: rotate(${360 + getRandomInt(0, 5) * 72}deg);
-    }
-  }
-`;
-
-const Section = styled.div`
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-  transform-origin: center;
-`;
-
-const Section1 = styled(Section)`
-  background-color: red;
-  transform: rotate(0deg);
-`;
-const Section2 = styled(Section)`
-  background-color: blue;
-  transform: rotate(72deg);
-`;
-const Section3 = styled(Section)`
-  background-color: red;
-  transform: rotate(144deg);
-`;
-const Section4 = styled(Section)`
-  background-color: blue;
-  transform: rotate(216deg);
-`;
-const Section5 = styled(Section)`
-  background-color: red;
-  transform: rotate(288deg);
-`;
-
-function getRandomInt(min, max) {
-  return Math.floor(Math.random() * (max - min)) + min;
 }
 
+const Container = styled.div`
+  .container {
+    height: 350px;
+    width: 350px;
+    position: relative;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 0 10px hsl(358deg 99% 24% /.3);
+    transition: 3s all;
+    border: 1px solid black;
+  }
+  .container div {
+    height: 50%;
+    width: 200px;
+    clip-path: polygon(100% 0, 50% 100%, 0 0);
+    transform: translateX(-50%);
+    transform-origin: bottom;
+    position: absolute;
+    left: 21%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-family: monospace;
+    font-weight: 1000;
+    transform-origin: bottom;
+    color: black;
+    writing-mode: vertical-rl;
+  }
+  .container .one {
+    background: hsla(204deg 70% 70% / .9);
+    left: 50%;
+  }
+  .container .two {
+    background: hsla(204deg 70% 66% / .9);
+    transform: rotate(60deg);
+  }
+  .container .three {
+    background: hsla(204deg 70% 62% / .9);
+    transform: rotate(120deg);
+  }
+  .container .four {
+    background: hsl(358deg 99% 64% /.3);
+    transform: rotate(180deg);
+  }
+  .container .five {
+    background: hsl(358deg 99% 54% /.3);
+    transform: rotate(240deg);
+  }
+  .container .six {
+    background: hsl(358deg 99% 44% /.3);
+    transform: rotate(300deg);
+  }
 
-export default Roulette;
+  #spin {
+    height: 20px;
+    width: 60px;
+    background: hsl(358deg 99% 64% /.3);
+    position: absolute;
+    margin-top: 20px;
+    margin-left: 147px;
+    font-size: 10px;
+    color: black;
+    font-weight: 1000;
+    letter-spacing: 4px;
+    border: 1px solid black;
+    cursor: pointer;
+    box-shadow: 0 5px 10px hsl(358deg 99% 24% /.3);
+    transition: 0.2s all;
+  }
+  #spin:hover {
+    box-shadow: none;
+  }
+  .stopper {
+    height: 20px;
+    width: 15px;
+    background: hsl(358deg 99% 64% /.3);
+    /* position: absolute; */
+    clip-path: polygon(100% 0, 50% 100%, 0 0);
+    margin-top: -370px;
+    margin-left: 165px;
+  }
+`;

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import GlobalStyles from '../GlobalStyles.js';
 import Form from './Form.jsx';
 import Feed from './Feed.jsx';
-import Roulette5 from './Roulette5.jsx';
+import Roulette from './Roulette.jsx';
 import exampleData from './tests/exampleData';
 
 const App = () => {
@@ -22,7 +22,7 @@ const App = () => {
         </div>
         <Feed messages={messages}/>
         <RouletteWrapper>
-          <Roulette5 />
+          <Roulette />
         </RouletteWrapper>
       </Container>
     </div>
