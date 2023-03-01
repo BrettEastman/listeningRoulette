@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
-const Roulette4 = () => {
+const Roulette5 = () => {
   const [ isAnimating, setIsAnimating ] = useState(false);
   const [ isSpinning, setIsSpinning ] = useState(false);
   const [ startSpinning, setStartSpinning ] = useState(0);
@@ -38,15 +38,14 @@ const Roulette4 = () => {
 const Button = styled.button`
   display: block;
   gap: 10px;
-`
+`;
 
 const Container = styled.div`
   width: 200px;
   height: 200px;
-  padding: 10px;
   position: relative;
-  /* display: block; */
-`
+`;
+
 const Wheel = styled.div`
   width: 100%;
   height: 100%;
@@ -73,7 +72,7 @@ const Section = styled.div`
   position: absolute;
   width: 100%;
   height: 100%;
-  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  clip-path: polygon(100% 0%, 50% 100%, 0% 20%);
   transform-origin: center;
 `;
 
@@ -103,4 +102,4 @@ function getRandomInt(min, max) {
 }
 
 
-export default Roulette4;
+export default Roulette5;

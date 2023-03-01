@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { RxColorWheel } from 'react-icons/rx';
 
 const Roulette2 = () => {
   return (

@@ -38,10 +38,10 @@ const Container = styled.div`
     width: 100%;
     height: 100%;
     clip-path: polygon(
-      50% 0%,
-      100% 50%,
-      50% 100%,
-      0% 50%
+      30% 0%,
+      100% 30%,
+      30% 100%,
+      0% 30%
     );
   }
 `;
