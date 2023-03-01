@@ -55,12 +55,13 @@ const Form = function CreateForm ({ handleSubmit }) {
 
 const StyledForm = styled.form`
   font-size: .8rem;
-  padding: .2rem;
-  margin: .2rem;
+  text-shadow: 0.5px 0.5px hsla(204deg 70% 86% / .9);
+  padding: .5rem;
+  margin: .5rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  background-color: hsl(358deg 99% 64% /.3);
+  background: radial-gradient(hsl(358deg 99% 84% /.3), hsl(358deg 99% 64% /.3));
   row-gap: 8px;
 `;
 

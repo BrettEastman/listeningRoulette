@@ -6,9 +6,9 @@ const GlobalStyles = createGlobalStyle`
   box-sizing: border-box;
 }
 
-* {
+/* * {
   border: 0.5px solid black;
-}
+} */
 
 * {
   margin: 0;

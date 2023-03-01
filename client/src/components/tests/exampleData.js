@@ -6,7 +6,7 @@ const messageData = [
   },
   {
     name: 'Nat',
-    body: 'That snare drum sound slaps',
+    body: 'That snare drum sound slaps!',
     timeStamp: ''
   },
   {
@@ -21,7 +21,7 @@ const messageData = [
   },
   {
     name: 'Shep Josh Garza',
-    body: 'What do y\'all think of the eq on that kick drum',
+    body: 'What do y\'all think of the eq on that kick drum?',
     timeStamp: ''
   },
   {

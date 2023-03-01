@@ -13,9 +13,10 @@ const Feed = ({ messages }) => {
 };
 
 const UnorderedList = styled.ul`
-  border: 0.5px solid green;
-  padding: 10px;
-  margin: 10px;
+  border: 0.5px dashed 	hsl(358, 87%, 24%);
+  border-radius: 10px;
+  padding: 0.5rem;
+  margin: 0.5rem;
 `
 
 export default Feed;

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
-const Roulette3 = () => {
+const Roulette4 = () => {
   const [ isAnimating, setIsAnimating ] = useState(false);
   const [ isSpinning, setIsSpinning ] = useState(false)
 
@@ -18,11 +18,11 @@ const Roulette3 = () => {
   return (
     <Container>
       <Wheel style={{animationPlayState: (isAnimating || isSpinning) ? "running" : "paused"}}>
-        <div>1</div>
-        <div>2</div>
-        <div>3</div>
-        <div>4</div>
-        <div>5</div>
+        <Section1 />
+        <Section2 />
+        <Section3 />
+        <Section4 />
+        <Section5 />
       </Wheel>
       <button onClick={() => setIsSpinning(true)}>Spin</button>
     </Container>
@@ -33,19 +33,7 @@ const Container = styled.div`
   width: 200px;
   height: 200px;
   position: relative;
-
-  div {
-    width: 100%;
-    height: 100%;
-    clip-path: polygon(
-      50% 0%,
-      100% 50%,
-      50% 100%,
-      0% 50%
-    );
-  }
-`;
-
+`
 const Wheel = styled.div`
   width: 100%;
   height: 100%;
@@ -63,40 +51,35 @@ const Wheel = styled.div`
       transform: rotate(${360 + getRandomInt(0, 5) * 72}deg);
     }
   }
+`;
 
-  div {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    overflow: hidden;
+const Section = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  transform-origin: center;
+`;
 
-    &:nth-child(1) {
-      transform: rotate(0deg);
-      background-color: #e74c3c;
-    }
-
-    &:nth-child(2) {
-      transform: rotate(72deg);
-      background-color: #f1c40f;
-    }
-
-    &:nth-child(3) {
-      transform: rotate(144deg);
-      background-color: #2ecc71;
-    }
-
-    &:nth-child(4) {
-      transform: rotate(216deg);
-      background-color: #3498db;
-    }
-
-    &:nth-child(5) {
-      transform: rotate(288deg);
-      background-color: #9b59b6;
-    }
-  }
+const Section1 = styled(Section)`
+  background-color: red;
+  transform: rotate(0deg);
+`;
+const Section2 = styled(Section)`
+  background-color: blue;
+  transform: rotate(72deg);
+`;
+const Section3 = styled(Section)`
+  background-color: red;
+  transform: rotate(144deg);
+`;
+const Section4 = styled(Section)`
+  background-color: blue;
+  transform: rotate(216deg);
+`;
+const Section5 = styled(Section)`
+  background-color: red;
+  transform: rotate(288deg);
 `;
 
 function getRandomInt(min, max) {
@@ -104,4 +87,4 @@ function getRandomInt(min, max) {
 }
 
 
-export default Roulette3;
+export default Roulette4;

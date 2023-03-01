@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import GlobalStyles from '../GlobalStyles.js';
 import Form from './Form.jsx';
 import Feed from './Feed.jsx';
-import Roulette3 from './Roulette3.jsx';
+import Roulette5 from './Roulette5.jsx';
 import exampleData from './tests/exampleData';
 
 const App = () => {
@@ -21,8 +21,8 @@ const App = () => {
           <Form />
         </div>
         <Feed messages={messages}/>
-        <RouletteWrapper>The "Tiny Wheel"
-          <Roulette3 />
+        <RouletteWrapper>
+          <Roulette5 />
         </RouletteWrapper>
       </Container>
     </div>
@@ -35,7 +35,8 @@ const Title = styled.h1`
   opacity: 0.8;
   font-size: 5rem;
   text-shadow: 1px 1px 2px black;
-  padding-bottom: 10px;
+  padding-bottom: 1.5rem;
+  margin-left: 1.5rem;
 `;
 
 const Container = styled.div`
@@ -48,7 +49,7 @@ const Container = styled.div`
 const RouletteWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
 `
 
 export default App;
