@@ -6,7 +6,7 @@ const messageData = [
   },
   {
     name: 'Nat',
-    body: 'That snare drum sound slaps',
+    body: 'That snare drum sound slaps!',
     timeStamp: ''
   },
   {
@@ -16,7 +16,12 @@ const messageData = [
   },
   {
     name: 'Gauri',
-    body: 'Saw this band at a festival in Mendo and the drummer was dope af!',
+    body: 'Saw this band at a festival in Mendocino and the drummer was dope af!',
+    timeStamp: ''
+  },
+  {
+    name: 'Shep Josh Garza',
+    body: 'What do y\'all think of the eq on that kick drum?',
     timeStamp: ''
   },
   {
@@ -39,6 +44,11 @@ const messageData = [
     body: 'I chilled with the drummer after the show and she\'s a total badass',
     timeStamp: ''
   },
+  {
+    name: 'Shep Josh Garza',
+    body: 'I really like the low end on that bass drum',
+    timeStamp: ''
+  }
 ];
 
 export default messageData;

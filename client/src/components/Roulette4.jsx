@@ -1,17 +1,30 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { RxColorWheel } from 'react-icons/rx';
 
-const Roulette = () => {
+const Roulette4 = () => {
+  const [ isAnimating, setIsAnimating ] = useState(false);
+  const [ isSpinning, setIsSpinning ] = useState(false)
+
+  useEffect(() => {
+    if (isSpinning) {
+      setIsAnimating(true);
+      setTimeout(() => {
+        setIsAnimating(false);
+        setIsSpinning(false);
+      }, 3000);
+    }
+  }, [isSpinning]);
+
   return (
     <Container>
-      <Wheel>
+      <Wheel style={{animationPlayState: (isAnimating || isSpinning) ? "running" : "paused"}}>
         <Section1 />
         <Section2 />
         <Section3 />
         <Section4 />
         <Section5 />
       </Wheel>
+      <button onClick={() => setIsSpinning(true)}>Spin</button>
     </Container>
   );
 };
@@ -29,7 +42,9 @@ const Wheel = styled.div`
   left: 0;
   border-radius: 50%;
   border: 10px solid #333;
-  animation: spin 2s linear;
+  animation: spin 3s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
+  animation-play-state: running;
+  overflow: hidden;
 
   @keyframes spin {
     100% {
@@ -72,4 +87,4 @@ function getRandomInt(min, max) {
 }
 
 
-export default Roulette;
+export default Roulette4;
