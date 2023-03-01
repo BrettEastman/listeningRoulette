@@ -39,7 +39,7 @@ export default function Roulette6() {
         <div className="five">5</div>
         <div className="six">6</div>
       </div>
-      <span className="mid"></span>
+      {/* <span className="mid"></span> */}
       <button
         id="spin" onClick={() => {
           btnOnClick();
@@ -53,8 +53,8 @@ const Container = styled.div`
   .container {
     height: 350px;
     width: 350px;
-    background: white;
-    /* position: relative; */
+    /* background: white; */
+    position: relative;
     border-radius: 50%;
     overflow: hidden;
     box-shadow: 0 0 10px gray;
@@ -68,7 +68,7 @@ const Container = styled.div`
     transform: translateX(-50%);
     transform-origin: bottom;
     position: absolute;
-    left: 21%;
+    /* left: 21%; */
     display: flex;
     align-items: center;
     justify-content: center;
