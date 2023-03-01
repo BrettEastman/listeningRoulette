@@ -1,15 +1,23 @@
 import React, { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
 
-export default function Roulette6() {
+export default function Roulette6({ albums }) {
   const [ number, setNumber ] = useState(0);
   const [ spinningStopped, setSpinningStopped ] = useState(true)
   const containerRef = useRef(null)
+  const oneRef = useRef(null)
+  const twoRef = useRef(null)
+  const threeRef = useRef(null)
+  const fourRef = useRef(null)
+  const fiveRef = useRef(null)
+  const sixRef = useRef(null)
+
   useEffect(() => {
     if (containerRef.current) {
       // you have access to the container. Gives you info that may be useful. Similar to document.querySelector although it may need to load once first, which is why we have the useEffect.
-      // show me the thing that is closest to the stopper. I
-      console.log(containerRef.current.getBoundingClientRect()); //getBoundingClientRect is a property of html elements
+      // show me the thing that is closest to the stopper.
+       // could potentially use useRef to determine which container has the highest Y coordinate to determine the winner
+      console.log('containerRef getBounding: ', containerRef.current.getBoundingClientRect()); //getBoundingClientRect is a property of html elements
     }
   }, [spinningStopped])
 
@@ -17,7 +25,6 @@ export default function Roulette6() {
     return Math.floor(Math.random() * (max - min)) + min;
   }
 
-  console.log(containerRef)
   const btnOnClick = function () {
     setNumber(getRandomInt(3000, 10000));
     setNumber(number + Math.ceil(Math.random() * 10000));
@@ -26,16 +33,15 @@ export default function Roulette6() {
     }, 3001)
   };
 
-  // could potentially use useRef to determine which container has the highest Y coordinate to determine the winner
   return (
     <Container>
       <div className="container" ref={containerRef} style={{ transform: `rotate(${number}deg)`}}>
-        <div className="one">1</div>
-        <div className="two">2</div>
-        <div className="three">3</div>
-        <div className="four">4</div>
-        <div className="five">5</div>
-        <div className="six">6</div>
+        <div className="one">{albums[0]?.album}</div>
+        <div className="two">{albums[1]?.album}</div>
+        <div className="three">{albums[2]?.album}</div>
+        <div className="four">{albums[3]?.album}</div>
+        <div className="five">{albums[4]?.album}</div>
+        <div className="six">{albums[5]?.album}</div>
       </div>
       {/* <span className="mid"></span> */}
       <button
@@ -69,8 +75,8 @@ const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 20px;
-    font-family: monospace;
+    font-size: 16px;
+    font-family: inherit;
     font-weight: 1000;
     transform-origin: bottom;
     color: black;

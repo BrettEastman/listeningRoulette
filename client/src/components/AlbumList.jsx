@@ -6,7 +6,7 @@ const AlbumList = ({ albums }) => {
   return (
     <AListWrapper>Current Picks:
       {albums[0]?.name !== undefined ? (albums.map((album) => {
-        return <li>{`${album?.name}: ${album?.album}`}</li>
+        return <li key={album._id}>{`${album?.name}: ${album?.album}`}</li>
       })) : null}
     </AListWrapper>
   );

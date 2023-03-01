@@ -20,7 +20,6 @@ const App = () => {
     getAll()
       .then(({ data }) => {
         setAlbums(data);
-        console.log('data: ', data);
       })
       .catch((error) => {
         console.log('fetch error: ', error)
@@ -55,7 +54,7 @@ const App = () => {
         </div>
         <Feed messages={messages}/>
         <RouletteWrapper>
-          <Roulette />
+          <Roulette albums={albums}/>
         </RouletteWrapper>
       </Container>
     </div>
