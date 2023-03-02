@@ -1,7 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
+import AddMessage from './AddMessage.jsx';
 
-export default function Roulette6({ albums, viewState, setViewState }) {
+export default function Roulette6({ albums, viewState, setViewState, currentUser, handleMessage }) {
   const [ number, setNumber ] = useState(0);
   const [ spinningStopped, setSpinningStopped ] = useState(true)
   const containerRef = useRef(null)
@@ -48,6 +49,9 @@ export default function Roulette6({ albums, viewState, setViewState }) {
         }}>Spin</button>)}
       {viewState === 1 && (<button id="button" onClick={() => setViewState(0)}>Home</button>)}
       <div className="stopper" ref={stopperRef}></div>
+      <div>
+        {viewState === 1 && (<Message><AddMessage currentUser={currentUser} handleMessage={handleMessage}/></Message>)}
+      </div>
     </Container>
   );
 }
@@ -109,21 +113,24 @@ const Container = styled.div`
   #button {
     height: 20px;
     width: 60px;
-    background: hsl(358deg 99% 64% /.3);
+    background: hsl(358deg 99% 44% /.3);
     position: absolute;
     margin-top: 20px;
     margin-left: 147px;
     font-size: 10px;
     color: black;
     font-weight: 1000;
-    letter-spacing: 4px;
-    border: 1px solid black;
+    letter-spacing: 3px;
+    text-shadow: 0.5px 0.5px hsla(204deg 70% 86% / .9);
+    border: 0.5px solid black;
+    border-radius: 6px;
     cursor: pointer;
     box-shadow: 0 5px 10px hsl(358deg 99% 24% /.3);
     transition: 0.2s all;
   }
   #button:hover {
     box-shadow: none;
+    color: hsla(204deg 90% 66% / .9);
   }
   .stopper {
     height: 20px;
@@ -134,4 +141,8 @@ const Container = styled.div`
     margin-top: -370px;
     margin-left: 165px;
   }
+`;
+
+const Message = styled.div`
+  margin-top: 80px;
 `;

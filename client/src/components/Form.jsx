@@ -47,7 +47,7 @@ const Form = function CreateForm ({ handleSubmit }) {
           placeholder="Enter album"
           onChange={handleInputChange}
         />
-        <Input type="submit" value="Register"></Input>
+        <Input type="submit" value="Submit"></Input>
       </div>
     </StyledForm>
   );
@@ -64,16 +64,18 @@ const StyledForm = styled.form`
   justify-content: flex-start;
   background: radial-gradient(hsl(358deg 99% 84% /.3), hsl(358deg 99% 64% /.3));
   row-gap: 8px;
-  box-shadow: 0 2px 4px hsl(358deg 99% 24% /.3)
+  box-shadow: 0 2px 4px hsl(358deg 99% 24% /.3);
 `;
 
 const Input = styled.input`
   color: black;
-  border: none;
   background-color: hsl(358deg 99% 44% /.3);
   border-radius: 8px;
+  text-shadow: 0.5px 0.5px hsla(204deg 70% 86% / .9);
   padding: 8px;
   font-weight: 700;
+  letter-spacing: 3px;
+  border: 0.5px solid black;
   margin-top: 8px;
   cursor: pointer;
   &:hover {
