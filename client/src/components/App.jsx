@@ -90,7 +90,7 @@ const App = () => {
       <Container>
         {(viewState === 0 && timeToSpin === true) && (<div><Spin>Time to Spin!</Spin><AlbumList albums={albums}/></div>)}
         {(viewState === 0 && timeToSpin === false) && (<div><Form handleSubmit={handleSubmit}/><AlbumList albums={albums}/></div>)}
-        {viewState === 1 && (<Feed messages={messages}/>)}
+        {viewState === 1 && (<FeedWrapper><Feed messages={messages}/></FeedWrapper>)}
         <RouletteWrapper>
           <Roulette albums={albums} viewState={viewState} setViewState={setViewState} currentUser={currentUser} handleMessage={handleMessage}/>
         </RouletteWrapper>
@@ -114,6 +114,11 @@ const Container = styled.div`
   flex-direction: row;
   justify-content: space-around;
   font-family: inherit;
+`;
+
+const FeedWrapper = styled.div`
+  max-height: 36rem;
+  overflow-y:auto
 `;
 
 const RouletteWrapper = styled.div`

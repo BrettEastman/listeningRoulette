@@ -1,14 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import { RiHeartFill, RiEmotionLaughFill, RiEmotionNormalFill } from "react-icons/ri";
-import { HiOutlineHand } from "react-icons/hi";
 
 const MessageItem = ({ name, body, time }) => {
   return (
     <MessageWrapper>
       <div>
         <Span>{name}</Span>
-        <span>{time}</span>
       </div>
       <div>
         <P>{body}</P>
