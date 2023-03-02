@@ -6,7 +6,7 @@ import Form from './Form.jsx';
 import AlbumList from './AlbumList.jsx';
 import Feed from './Feed.jsx';
 import Roulette from './Roulette.jsx';
-import exampleData from './tests/exampleData';
+import exampleData from './utilities/exampleData';
 
 const App = () => {
   const [ messages, setMessages ] = useState(exampleData);
@@ -28,7 +28,7 @@ const App = () => {
         setAlbums(data);
       })
       .catch((error) => {
-        console.log('fetch error: ', error)
+        console.error('fetch error: ', error)
       });
   };
 
@@ -38,7 +38,7 @@ const App = () => {
         setMessages(data);
       })
       .catch((error) => {
-        console.log('fetch error: ', error)
+        console.error('fetch error: ', error)
       });
   };
 
@@ -57,7 +57,7 @@ const App = () => {
       fetchAll();
     })
     .catch((error) => {
-      console.log('post error: ', error)
+      console.error('post error: ', error)
     });
   };
 
@@ -70,7 +70,7 @@ const App = () => {
     .then((response) => {
       fetchAllMessages();
     }).catch((error) => {
-      console.log('message error: ', error)
+      console.error('message error: ', error)
     });
   };
 
