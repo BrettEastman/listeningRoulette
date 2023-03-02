@@ -54,9 +54,9 @@ const Form = function CreateForm ({ handleSubmit }) {
 };
 
 const StyledForm = styled.form`
-  font-size: .8rem;
+  font-size: 1rem;
   text-shadow: 0.5px 0.5px hsla(204deg 70% 66% / .9);
-  padding: .5rem;
+  padding: 1rem;
   margin: .5rem;
   border-radius: 8px;
   display: flex;
@@ -65,6 +65,7 @@ const StyledForm = styled.form`
   background: radial-gradient(hsl(358deg 99% 84% /.3), hsl(358deg 99% 64% /.3));
   row-gap: 8px;
   box-shadow: 0 2px 4px hsl(358deg 99% 24% /.3);
+  transform: scale(1.1);
 `;
 
 const Input = styled.input`
