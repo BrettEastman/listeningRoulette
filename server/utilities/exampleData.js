@@ -21,7 +21,7 @@ const messageData = [
   },
   {
     name: 'Shep Josh Garza',
-    body: 'What do y\'all think of the eq on that kick drum?',
+    body: 'What do y\'all think of the eq on that bass drum?',
     timeStamp: ''
   },
   {
@@ -36,7 +36,7 @@ const messageData = [
   },
   {
     name: 'Nat',
-    body: 'What kind of cymbal is that? Is that what they call a crash cymbal?',
+    body: 'What kind of cymbal is that? I\'m only familiar with crash cymbals',
     timeStamp: ''
   },
   {
@@ -46,12 +46,12 @@ const messageData = [
   },
   {
     name: 'Gauri',
-    body: 'I chilled with the drummer after the show and she\'s a total badass',
+    body: 'I chilled with the drummer after that show and she\'s a total badass',
     timeStamp: ''
   },
   {
     name: 'Shep Josh Garza',
-    body: 'I really like the low end on that bass drum',
+    body: 'I really like the low end on that kick drum',
     timeStamp: ''
   },
   {
