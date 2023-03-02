@@ -13,6 +13,7 @@ const App = () => {
   const [ albums, setAlbums ] = useState({});
   const [ viewState, setViewState ] = useState(0);
   const [ currentUser, setCurrentUser ] = useState('Sean');
+  const [ timeToSpin, setTimeToSpin ] = useState(false);
 
   const getAll = () => {
     return axios.get('/lr');
@@ -47,7 +48,7 @@ const App = () => {
     fetchAllMessages();
   }, []);
 
-  const handleSubmit = (obj) => {
+  const handleAlbum = (obj) => {
     axios({
       method: 'post',
       url: '/lr',
@@ -74,6 +75,15 @@ const App = () => {
     });
   };
 
+  const handleSubmit = (data) => {
+    if (albums.length >= 6) {
+      handleAlbum(data);
+      setTimeToSpin(true);
+    } else {
+      handleAlbum(data);
+    }
+  };
+
   return (
     <div>
       <GlobalStyles />
@@ -82,6 +92,7 @@ const App = () => {
         {viewState === 0 && (<div>
           <Form handleSubmit={handleSubmit}/>
           <AlbumList albums={albums}/>
+          {timeToSpin === true && (<Spin>Time to Spin!</Spin>)}
         </div>)}
         {viewState === 1 && (<Feed messages={messages}/>)}
         <RouletteWrapper>
@@ -113,6 +124,19 @@ const RouletteWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+`;
+
+const Spin = styled.div`
+  font-size: 1.8rem;
+  text-shadow: 0.5px 0.5px hsla(204deg 70% 76% / .9);
+  padding: 1.5rem;
+  margin: .5rem;
+  margin-top: 25px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: radial-gradient(hsl(358deg 99% 84% /.3), hsl(358deg 99% 64% /.3));
 `;
 
 export default App;

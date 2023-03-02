@@ -55,7 +55,7 @@ const Form = function CreateForm ({ handleSubmit }) {
 
 const StyledForm = styled.form`
   font-size: .8rem;
-  text-shadow: 0.5px 0.5px hsla(204deg 70% 86% / .9);
+  text-shadow: 0.5px 0.5px hsla(204deg 70% 66% / .9);
   padding: .5rem;
   margin: .5rem;
   border-radius: 8px;
@@ -71,7 +71,7 @@ const Input = styled.input`
   color: black;
   background-color: hsl(358deg 99% 44% /.3);
   border-radius: 8px;
-  text-shadow: 0.5px 0.5px hsla(204deg 70% 86% / .9);
+  text-shadow: 0.5px 0.5px hsla(204deg 70% 66% / .9);
   padding: 8px;
   font-weight: 700;
   letter-spacing: 3px;
