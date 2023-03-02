@@ -1,12 +1,12 @@
 const messageData = [
   {
     name: 'Uncle J',
-    body: 'Love the sound of the hi hat on this track',
+    body: 'Love the sound of the hi hat on this track.',
     timeStamp: ''
   },
   {
     name: 'Nat',
-    body: 'That snare drum sound slaps!',
+    body: 'That snare drum totally slaps!',
     timeStamp: ''
   },
   {
@@ -22,6 +22,11 @@ const messageData = [
   {
     name: 'Shep Josh Garza',
     body: 'What do y\'all think of the eq on that kick drum?',
+    timeStamp: ''
+  },
+  {
+    name: 'Sophia',
+    body: 'Have you guys heard this beat before?',
     timeStamp: ''
   },
   {
@@ -47,6 +52,11 @@ const messageData = [
   {
     name: 'Shep Josh Garza',
     body: 'I really like the low end on that bass drum',
+    timeStamp: ''
+  },
+  {
+    name: 'Sophia',
+    body: 'I think I\'ve heard this beat before. It\'s in another song',
     timeStamp: ''
   }
 ];

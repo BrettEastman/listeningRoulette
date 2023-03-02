@@ -5,8 +5,8 @@ import MessageItem from './MessageItem';
 const Feed = ({ messages }) => {
   return (
     <div>
-      {messages.map((message) => {
-        return <UnorderedList><MessageItem name={message.name} body={message.body} time={message.timeStamp}/></UnorderedList>
+      {messages.map((message, index) => {
+        return <UnorderedList><MessageItem key={index} name={message.name} body={message.body} time={message.timeStamp}/></UnorderedList>
       })}
     </div>
   )

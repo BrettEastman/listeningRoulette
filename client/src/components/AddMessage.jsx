@@ -3,11 +3,11 @@ import styled from 'styled-components';
 import FormInput from './FormInput';
 
 const initialFormInput = {
-  name: '',
-  album: '',
+  name: 'Sean',
+  body: '',
 };
 
-const Form = function CreateForm ({ handleSubmit }) {
+const AddMessage = function({ handleMessage, currentUser }) {
   const [ formInput, setFormInput ] = useState(initialFormInput);
 
   const clearForm = () => {
@@ -25,29 +25,19 @@ const Form = function CreateForm ({ handleSubmit }) {
     <StyledForm
       onSubmit={(event) => {
         event.preventDefault();
-        handleSubmit(formInput);
+        handleMessage(formInput);
         clearForm();
       }}
     >
-      <h3>Enter your pick!</h3>
       <div>
         <FormInput
-          labelText="Name"
           type="text"
-          name="name"
-          value={formInput.name}
-          placeholder="Enter name"
+          name="body"
+          value={formInput.body}
+          placeholder="Message here"
           onChange={handleInputChange}
         />
-        <FormInput
-          labelText="Album"
-          type="text"
-          name="album"
-          value={formInput.album}
-          placeholder="Enter album"
-          onChange={handleInputChange}
-        />
-        <Input type="submit" value="Submit"></Input>
+        <Input type="submit" value="Post"></Input>
       </div>
     </StyledForm>
   );
@@ -69,18 +59,16 @@ const StyledForm = styled.form`
 
 const Input = styled.input`
   color: black;
+  border: none;
   background-color: hsl(358deg 99% 44% /.3);
   border-radius: 8px;
-  text-shadow: 0.5px 0.5px hsla(204deg 70% 86% / .9);
   padding: 8px;
   font-weight: 700;
-  letter-spacing: 3px;
-  border: 0.5px solid black;
   margin-top: 8px;
   cursor: pointer;
   &:hover {
     color: hsla(204deg 90% 66% / .9);
   }
-`
+`;
 
-export default Form;
+export default AddMessage;

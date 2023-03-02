@@ -1,15 +1,20 @@
 import React, { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
+import AddMessage from './AddMessage.jsx';
 
-export default function Roulette6() {
+export default function Roulette6({ albums, viewState, setViewState, currentUser, handleMessage }) {
   const [ number, setNumber ] = useState(0);
   const [ spinningStopped, setSpinningStopped ] = useState(true)
   const containerRef = useRef(null)
+  const stopperRef = useRef(null)
+
   useEffect(() => {
     if (containerRef.current) {
       // you have access to the container. Gives you info that may be useful. Similar to document.querySelector although it may need to load once first, which is why we have the useEffect.
-      // show me the thing that is closest to the stopper. I
-      console.log(containerRef.current.getBoundingClientRect()); //getBoundingClientRect is a property of html elements
+      // show me the thing that is closest to the stopper.
+       // could potentially use useRef to determine which container has the highest Y coordinate to determine the winner
+      console.log('containerRef getBounding: ', containerRef.current.getBoundingClientRect()); //getBoundingClientRect is a property of html elements
+      console.log('stopperRef getBounding: ', stopperRef.current.getBoundingClientRect()); //getBoundingClientRect is a property of html elements
     }
   }, [spinningStopped])
 
@@ -17,32 +22,36 @@ export default function Roulette6() {
     return Math.floor(Math.random() * (max - min)) + min;
   }
 
-  console.log(containerRef)
   const btnOnClick = function () {
     setNumber(getRandomInt(3000, 10000));
     setNumber(number + Math.ceil(Math.random() * 10000));
     setTimeout(() => {
       setSpinningStopped(!spinningStopped);
     }, 3001)
+    setTimeout(() => {
+      setViewState(1);
+    }, 5000)
   };
 
-  // could potentially use useRef to determine which container has the highest Y coordinate to determine the winner
   return (
     <Container>
       <div className="container" ref={containerRef} style={{ transform: `rotate(${number}deg)`}}>
-        <div className="one">1</div>
-        <div className="two">2</div>
-        <div className="three">3</div>
-        <div className="four">4</div>
-        <div className="five">5</div>
-        <div className="six">6</div>
+        <div className="one">{albums[0]?.album}</div>
+        <div className="two">{albums[1]?.album}</div>
+        <div className="three">{albums[2]?.album}</div>
+        <div className="four">{albums[3]?.album}</div>
+        <div className="five">{albums[4]?.album}</div>
+        <div className="six">{albums[5]?.album}</div>
       </div>
-      {/* <span className="mid"></span> */}
-      <button
-        id="spin" onClick={() => {
+      {viewState === 0 && (<button
+        id="button" onClick={() => {
           btnOnClick();
-        }}>Spin</button>
-      <div className="stopper"></div>
+        }}>Spin</button>)}
+      {viewState === 1 && (<button id="button" onClick={() => setViewState(0)}>Home</button>)}
+      <div className="stopper" ref={stopperRef}></div>
+      <div>
+        {viewState === 1 && (<Message><AddMessage currentUser={currentUser} handleMessage={handleMessage}/></Message>)}
+      </div>
     </Container>
   );
 }
@@ -69,8 +78,8 @@ const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 20px;
-    font-family: monospace;
+    font-size: 16px;
+    font-family: inherit;
     font-weight: 1000;
     transform-origin: bottom;
     color: black;
@@ -101,32 +110,39 @@ const Container = styled.div`
     transform: rotate(300deg);
   }
 
-  #spin {
+  #button {
     height: 20px;
     width: 60px;
-    background: hsl(358deg 99% 64% /.3);
+    background: hsl(358deg 99% 44% /.3);
     position: absolute;
     margin-top: 20px;
     margin-left: 147px;
     font-size: 10px;
     color: black;
     font-weight: 1000;
-    letter-spacing: 4px;
-    border: 1px solid black;
+    letter-spacing: 3px;
+    text-shadow: 0.5px 0.5px hsla(204deg 70% 86% / .9);
+    border: 0.5px solid black;
+    border-radius: 6px;
     cursor: pointer;
     box-shadow: 0 5px 10px hsl(358deg 99% 24% /.3);
     transition: 0.2s all;
   }
-  #spin:hover {
+  #button:hover {
     box-shadow: none;
+    color: hsla(204deg 90% 66% / .9);
   }
   .stopper {
     height: 20px;
     width: 15px;
     background: hsl(358deg 99% 64% /.3);
-    /* position: absolute; */
+    position: absolute;
     clip-path: polygon(100% 0, 50% 100%, 0 0);
     margin-top: -370px;
     margin-left: 165px;
   }
+`;
+
+const Message = styled.div`
+  margin-top: 80px;
 `;

@@ -11,6 +11,8 @@ import exampleData from './tests/exampleData';
 const App = () => {
   const [ messages, setMessages ] = useState(exampleData);
   const [ albums, setAlbums ] = useState({});
+  const [ viewState, setViewState ] = useState(0);
+  const [ currentUser, setCurrentUser ] = useState('Sean');
 
   const getAll = () => {
     return axios.get('/lr');
@@ -20,7 +22,6 @@ const App = () => {
     getAll()
       .then(({ data }) => {
         setAlbums(data);
-        console.log('data: ', data);
       })
       .catch((error) => {
         console.log('fetch error: ', error)
@@ -44,18 +45,31 @@ const App = () => {
     });
   };
 
+  const handleMessage = (obj) => {
+    axios({
+      method: 'post',
+      url: '/message',
+      data: obj
+    })
+    .then((response) => {
+      fetchMessages()
+    }).catch((error) => {
+      console.log('message error: ', error)
+    });
+  };
+
   return (
     <div>
       <GlobalStyles />
       <Title>Listening Roulette</Title>
       <Container>
-        <div>
+        {viewState === 0 && (<div>
           <Form handleSubmit={handleSubmit}/>
           <AlbumList albums={albums}/>
-        </div>
-        <Feed messages={messages}/>
+        </div>)}
+        {viewState === 1 && (<Feed messages={messages}/>)}
         <RouletteWrapper>
-          <Roulette />
+          <Roulette albums={albums} viewState={viewState} setViewState={setViewState} currentUser={currentUser} handleMessage={handleMessage}/>
         </RouletteWrapper>
       </Container>
     </div>
@@ -83,6 +97,6 @@ const RouletteWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-`
+`;
 
 export default App;
