@@ -5,18 +5,6 @@ import AddMessage from './AddMessage.jsx';
 export default function Roulette6({ albums, viewState, setViewState, currentUser, handleMessage }) {
   const [ number, setNumber ] = useState(0);
   const [ spinningStopped, setSpinningStopped ] = useState(true)
-  const containerRef = useRef(null)
-  const stopperRef = useRef(null)
-
-  useEffect(() => {
-    if (containerRef.current) {
-      // you have access to the container. Gives you info that may be useful. Similar to document.querySelector although it may need to load once first, which is why we have the useEffect.
-      // show me the thing that is closest to the stopper.
-       // could potentially use useRef to determine which container has the highest Y coordinate to determine the winner
-      console.log('containerRef getBounding: ', containerRef.current.getBoundingClientRect()); //getBoundingClientRect is a property of html elements
-      console.log('stopperRef getBounding: ', stopperRef.current.getBoundingClientRect()); //getBoundingClientRect is a property of html elements
-    }
-  }, [spinningStopped])
 
   function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
@@ -30,12 +18,12 @@ export default function Roulette6({ albums, viewState, setViewState, currentUser
     }, 3001)
     setTimeout(() => {
       setViewState(1);
-    }, 5000)
+    }, 4000)
   };
 
   return (
     <Container>
-      <div className="container" ref={containerRef} style={{ transform: `rotate(${number}deg)`}}>
+      <div className="container" style={{ transform: `rotate(${number}deg)`}}>
         <div className="one">{albums[0]?.album}</div>
         <div className="two">{albums[1]?.album}</div>
         <div className="three">{albums[2]?.album}</div>
@@ -48,7 +36,7 @@ export default function Roulette6({ albums, viewState, setViewState, currentUser
           btnOnClick();
         }}>Spin</button>)}
       {viewState === 1 && (<button id="button" onClick={() => setViewState(0)}>Home</button>)}
-      <div className="stopper" ref={stopperRef}></div>
+      <div className="stopper"></div>
       <div>
         {viewState === 1 && (<Message><AddMessage currentUser={currentUser} handleMessage={handleMessage}/></Message>)}
       </div>
