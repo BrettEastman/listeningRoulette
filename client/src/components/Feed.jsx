@@ -6,7 +6,7 @@ const Feed = ({ messages }) => {
   return (
     <div>
       {messages.slice().reverse().map((message, index) => {
-        return <UnorderedList><MessageItem key={index} name={message.name} body={message.body} time={message.timeStamp}/></UnorderedList>
+        return <UnorderedList><MessageItem key={index} name={message.name} body={message.body}/></UnorderedList>
       })}
     </div>
   )

@@ -49,9 +49,6 @@ const EmotoSpan = styled.span`
   &:hover {
     transform: scale(1.25);
   }
-  /* &:disabled {
-    opacity: 1;
-  } */
 `;
 
 const MessageFooter = styled.div`
