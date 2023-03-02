@@ -8,7 +8,13 @@ const lrSchema = new mongoose.Schema({
   album: String
 });
 
+const messageSchema = new mongoose.Schema({
+  name: String,
+  body: String
+});
+
 const Entry = mongoose.model('Entry', lrSchema);
+const Message = mongoose.model('Message', messageSchema);
 
 // MODELS:
 exports.getEntries = (data) => {
@@ -18,4 +24,13 @@ exports.getEntries = (data) => {
 exports.saveOrUpdate = (data) => {
   let query = { name: data.name }
   return Entry.findOneAndUpdate(query, { name: data.name, album: data.album }, {upsert: true})
+};
+
+exports.getMessages = (data) => {
+  return Message.find({}).exec();
+}
+
+exports.saveMessage = (data) => {
+  console.log('data from db index: ', data)
+  return Message.create(data);
 };

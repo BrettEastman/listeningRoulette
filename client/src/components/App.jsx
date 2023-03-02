@@ -18,6 +18,10 @@ const App = () => {
     return axios.get('/lr');
   }
 
+  const getAllMessages = () => {
+    return axios.get('/messages');
+  }
+
   const fetchAll = () => {
     getAll()
       .then(({ data }) => {
@@ -28,8 +32,20 @@ const App = () => {
       });
   };
 
+  const fetchAllMessages = () => {
+    getAllMessages()
+      .then(({ data }) => {
+        setMessages(data);
+      })
+      .catch((error) => {
+        console.log('fetch error: ', error)
+      });
+  };
+
   useEffect(() => {
-    fetchAll()}, []);
+    fetchAll();
+    fetchAllMessages();
+  }, []);
 
   const handleSubmit = (obj) => {
     axios({
@@ -38,7 +54,7 @@ const App = () => {
       data: obj
     })
     .then((response) => {
-      fetchAll()
+      fetchAll();
     })
     .catch((error) => {
       console.log('post error: ', error)
@@ -48,11 +64,11 @@ const App = () => {
   const handleMessage = (obj) => {
     axios({
       method: 'post',
-      url: '/message',
+      url: '/messages',
       data: obj
     })
     .then((response) => {
-      fetchMessages()
+      fetchAllMessages();
     }).catch((error) => {
       console.log('message error: ', error)
     });
