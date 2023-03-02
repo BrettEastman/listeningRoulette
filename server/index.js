@@ -1,6 +1,6 @@
 require('dotenv').config(); // must be first
 const express = require('express');
-const { getEntries, saveOrUpdate } = require('./db/index.js');
+const { getEntries, saveOrUpdate, getMessages, saveMessage } = require('./db/index.js');
 
 // Main
 const app = express();
@@ -18,6 +18,23 @@ app.get('/lr', (req, res) => {
 
 app.post('/lr', (req, res) => {
   saveOrUpdate(req.body)
+    .then((data) => {
+      res.status(201).json(data);
+    })
+    .catch(() => {
+      res.sendStatus(400);
+    });
+});
+
+app.get('/messages', (req, res) => {
+  getMessages()
+    .then((data) => {
+      res.send(data);
+    })
+});
+
+app.post('/messages', (req, res) => {
+  saveMessage(req.body)
     .then((data) => {
       res.status(201).json(data);
     })

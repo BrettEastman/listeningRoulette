@@ -59,9 +59,11 @@ const StyledForm = styled.form`
 
 const Input = styled.input`
   color: black;
-  border: none;
   background-color: hsl(358deg 99% 44% /.3);
   border-radius: 8px;
+  letter-spacing: 3px;
+  text-shadow: 0.5px 0.5px hsla(204deg 70% 86% / .9);
+  border: 0.5px solid black;
   padding: 8px;
   font-weight: 700;
   margin-top: 8px;

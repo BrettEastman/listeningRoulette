@@ -6,7 +6,7 @@ import Form from './Form.jsx';
 import AlbumList from './AlbumList.jsx';
 import Feed from './Feed.jsx';
 import Roulette from './Roulette.jsx';
-import exampleData from './tests/exampleData';
+import exampleData from './utilities/exampleData';
 
 const App = () => {
   const [ messages, setMessages ] = useState(exampleData);
@@ -18,18 +18,34 @@ const App = () => {
     return axios.get('/lr');
   }
 
+  const getAllMessages = () => {
+    return axios.get('/messages');
+  }
+
   const fetchAll = () => {
     getAll()
       .then(({ data }) => {
         setAlbums(data);
       })
       .catch((error) => {
-        console.log('fetch error: ', error)
+        console.error('fetch error: ', error)
+      });
+  };
+
+  const fetchAllMessages = () => {
+    getAllMessages()
+      .then(({ data }) => {
+        setMessages(data);
+      })
+      .catch((error) => {
+        console.error('fetch error: ', error)
       });
   };
 
   useEffect(() => {
-    fetchAll()}, []);
+    fetchAll();
+    fetchAllMessages();
+  }, []);
 
   const handleSubmit = (obj) => {
     axios({
@@ -38,23 +54,23 @@ const App = () => {
       data: obj
     })
     .then((response) => {
-      fetchAll()
+      fetchAll();
     })
     .catch((error) => {
-      console.log('post error: ', error)
+      console.error('post error: ', error)
     });
   };
 
   const handleMessage = (obj) => {
     axios({
       method: 'post',
-      url: '/message',
+      url: '/messages',
       data: obj
     })
     .then((response) => {
-      fetchMessages()
+      fetchAllMessages();
     }).catch((error) => {
-      console.log('message error: ', error)
+      console.error('message error: ', error)
     });
   };
 
