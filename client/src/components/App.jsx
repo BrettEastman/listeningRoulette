@@ -11,6 +11,7 @@ import exampleData from './tests/exampleData';
 const App = () => {
   const [ messages, setMessages ] = useState(exampleData);
   const [ albums, setAlbums ] = useState({});
+  const [viewState, setViewState] = useState(0);
 
   const getAll = () => {
     return axios.get('/lr');
@@ -48,13 +49,13 @@ const App = () => {
       <GlobalStyles />
       <Title>Listening Roulette</Title>
       <Container>
-        <div>
+        {viewState === 0 && (<div>
           <Form handleSubmit={handleSubmit}/>
           <AlbumList albums={albums}/>
-        </div>
-        <Feed messages={messages}/>
+        </div>)}
+        {viewState === 1 && (<Feed messages={messages}/>)}
         <RouletteWrapper>
-          <Roulette albums={albums}/>
+          <Roulette albums={albums} viewState={viewState} setViewState={setViewState}/>
         </RouletteWrapper>
       </Container>
     </div>

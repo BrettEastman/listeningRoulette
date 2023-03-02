@@ -1,16 +1,11 @@
 import React, { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
 
-export default function Roulette6({ albums }) {
+export default function Roulette6({ albums, viewState, setViewState }) {
   const [ number, setNumber ] = useState(0);
   const [ spinningStopped, setSpinningStopped ] = useState(true)
   const containerRef = useRef(null)
-  const oneRef = useRef(null)
-  const twoRef = useRef(null)
-  const threeRef = useRef(null)
-  const fourRef = useRef(null)
-  const fiveRef = useRef(null)
-  const sixRef = useRef(null)
+  const stopperRef = useRef(null)
 
   useEffect(() => {
     if (containerRef.current) {
@@ -18,6 +13,7 @@ export default function Roulette6({ albums }) {
       // show me the thing that is closest to the stopper.
        // could potentially use useRef to determine which container has the highest Y coordinate to determine the winner
       console.log('containerRef getBounding: ', containerRef.current.getBoundingClientRect()); //getBoundingClientRect is a property of html elements
+      console.log('stopperRef getBounding: ', stopperRef.current.getBoundingClientRect()); //getBoundingClientRect is a property of html elements
     }
   }, [spinningStopped])
 
@@ -31,6 +27,9 @@ export default function Roulette6({ albums }) {
     setTimeout(() => {
       setSpinningStopped(!spinningStopped);
     }, 3001)
+    setTimeout(() => {
+      setViewState(1);
+    }, 5000)
   };
 
   return (
@@ -43,12 +42,12 @@ export default function Roulette6({ albums }) {
         <div className="five">{albums[4]?.album}</div>
         <div className="six">{albums[5]?.album}</div>
       </div>
-      {/* <span className="mid"></span> */}
-      <button
-        id="spin" onClick={() => {
+      {viewState === 0 && (<button
+        id="button" onClick={() => {
           btnOnClick();
-        }}>Spin</button>
-      <div className="stopper"></div>
+        }}>Spin</button>)}
+      {viewState === 1 && (<button id="button" onClick={() => setViewState(0)}>Home</button>)}
+      <div className="stopper" ref={stopperRef}></div>
     </Container>
   );
 }
@@ -107,7 +106,7 @@ const Container = styled.div`
     transform: rotate(300deg);
   }
 
-  #spin {
+  #button {
     height: 20px;
     width: 60px;
     background: hsl(358deg 99% 64% /.3);
@@ -123,14 +122,14 @@ const Container = styled.div`
     box-shadow: 0 5px 10px hsl(358deg 99% 24% /.3);
     transition: 0.2s all;
   }
-  #spin:hover {
+  #button:hover {
     box-shadow: none;
   }
   .stopper {
     height: 20px;
     width: 15px;
     background: hsl(358deg 99% 64% /.3);
-    /* position: absolute; */
+    position: absolute;
     clip-path: polygon(100% 0, 50% 100%, 0 0);
     margin-top: -370px;
     margin-left: 165px;
