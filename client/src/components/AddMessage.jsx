@@ -44,8 +44,8 @@ const AddMessage = function({ handleMessage, currentUser }) {
 };
 
 const StyledForm = styled.form`
-  font-size: .8rem;
-  text-shadow: 0.5px 0.5px hsla(204deg 70% 86% / .9);
+  font-size: 1rem;
+  text-shadow: 0.5px 0.5px hsla(204deg 70% 66% / .9);
   padding: .5rem;
   margin: .5rem;
   border-radius: 8px;
@@ -55,6 +55,7 @@ const StyledForm = styled.form`
   background: radial-gradient(hsl(358deg 99% 84% /.3), hsl(358deg 99% 64% /.3));
   row-gap: 8px;
   box-shadow: 0 2px 4px hsl(358deg 99% 24% /.3);
+  transform: scale(1.1);
 `;
 
 const Input = styled.input`
@@ -62,7 +63,7 @@ const Input = styled.input`
   background-color: hsl(358deg 99% 44% /.3);
   border-radius: 8px;
   letter-spacing: 3px;
-  text-shadow: 0.5px 0.5px hsla(204deg 70% 86% / .9);
+  text-shadow: 0.5px 0.5px hsla(204deg 70% 66% / .9);
   border: 0.5px solid black;
   padding: 8px;
   font-weight: 700;

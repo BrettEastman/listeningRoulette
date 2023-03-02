@@ -121,12 +121,13 @@ const Container = styled.div`
     color: black;
     font-weight: 1000;
     letter-spacing: 3px;
-    text-shadow: 0.5px 0.5px hsla(204deg 70% 86% / .9);
+    text-shadow: 0.5px 0.5px hsla(204deg 70% 66% / .9);
     border: 0.5px solid black;
     border-radius: 6px;
     cursor: pointer;
     box-shadow: 0 5px 10px hsl(358deg 99% 24% /.3);
     transition: 0.2s all;
+    transform: scale(1.5);
   }
   #button:hover {
     box-shadow: none;

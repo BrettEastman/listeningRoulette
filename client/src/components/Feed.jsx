@@ -17,6 +17,6 @@ const UnorderedList = styled.ul`
   border-radius: 10px;
   padding: 0.5rem;
   margin: 0.5rem;
-`
+`;
 
 export default Feed;

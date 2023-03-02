@@ -11,7 +11,7 @@ const MessageItem = ({ name, body, time }) => {
         <span>{time}</span>
       </div>
       <div>
-        <p>{body}</p>
+        <P>{body}</P>
         <MessageFooter>
           <EmotoSpan>❤️</EmotoSpan>
           <EmotoSpan>🤣</EmotoSpan>
@@ -27,8 +27,9 @@ const MessageItem = ({ name, body, time }) => {
 
 const MessageWrapper = styled.div`
   font-family: inherit;
+  font-size: 1.2rem;
   background: radial-gradient(hsl(358deg 99% 84% /.3), hsl(358deg 99% 64% /.3));
-  text-shadow: 0.5px 0.5px hsla(204deg 70% 86% / .9);
+  text-shadow: 0.5px 0.5px hsla(204deg 70% 66% / .9);
   border-radius: 8px;
   padding: 5px;
   box-shadow: 0 2px 4px hsl(358deg 99% 24% /.3);
@@ -37,6 +38,10 @@ const MessageWrapper = styled.div`
 
 const Span = styled.span`
   font-weight: 600;
+`;
+
+const P = styled.p`
+  font-size: 1rem;
 `;
 
 const EmotoSpan = styled.span`
