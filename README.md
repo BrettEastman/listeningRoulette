@@ -11,7 +11,7 @@ An app for listening to music with friends. Listening Roulette presents a fun wa
   * The wheel remains, but the "spin" button is replaced by "home" and a form for inputting messages appears below.
 
 ## Preview
-![Listening Roulette](to input video here)
+![Listening Roulette](https://drive.google.com/file/d/18Tz4dA9ZDuBM5q9XJLIw9AfTEICXJfk5/view)
 
 ## Tech Stack
 * **Client:** React, styled-components
